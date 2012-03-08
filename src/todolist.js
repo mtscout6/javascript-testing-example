@@ -1,13 +1,13 @@
-define(function(){
+define(['knockout'], function(ko){
   var TodoItem = function(title){
         var self = this;
 
-        self.title = title;
+        self.title = ko.observable(title);
       },
       TodoListViewModel = function(){
         var self = this;
 
-        self.tasks = [];
+        self.tasks = ko.observableArray([]);
         self.addTask = function(title){
           self.tasks.push(new TodoItem(title));
         };
