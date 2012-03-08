@@ -3,6 +3,7 @@ define(['knockout'], function(ko){
         var self = this;
 
         self.title = ko.observable(title);
+        self.isComplete = ko.observable(false);
       },
       TodoListViewModel = function(){
         var self = this;
