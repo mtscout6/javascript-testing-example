@@ -63,5 +63,16 @@ require(['../src/todolist'], function(TodoList){
       viewModel.removeTask(task);
       expect(viewModel.tasks().length).toBe(2);
     });
+
+    it('Should return incomplete tasks', function(){
+      var viewModel = buildViewModelWithTaskItems(3);
+
+      expect(viewModel.incompleteTasks().length).toBe(3);
+      viewModel.tasks()[1].isComplete(true);
+      expect(viewModel.incompleteTasks().length).toBe(2);
+
+      expect(viewModel.incompleteTasks()[0].title()).toBe('Task 1');
+      expect(viewModel.incompleteTasks()[1].title()).toBe('Task 3');
+    });
   });
 });
