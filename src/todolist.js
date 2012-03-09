@@ -17,6 +17,12 @@ define(['knockout'], function(ko){
         self.removeTask = function(task){
           self.tasks.remove(task);
         };
+
+        self.incompleteTasks = ko.computed(function() {
+          return ko.utils.arrayFilter(self.tasks(), function(task) {
+            return !task.isComplete();
+          });
+        });
       };
 
   return TodoListViewModel;
