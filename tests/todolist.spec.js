@@ -3,7 +3,8 @@ require(['../src/todolist'], function(TodoList){
     var viewModel = new TodoList();
 
     for(var i = 0; i < itemCount; i++){
-      viewModel.addTask('Task ' + (i+1));
+      viewModel.newTaskTitle('Task ' + (i+1));
+      viewModel.addTask();
     }
 
     return viewModel;
@@ -19,15 +20,24 @@ require(['../src/todolist'], function(TodoList){
       var viewModel = new TodoList();
 
       expect(viewModel.tasks().length).toBe(0);
-      viewModel.addTask('SomeTask');
+      viewModel.newTaskTitle('SomeTask');
+      viewModel.addTask();
 
       expect(viewModel.tasks().length).toBe(1);
       expect(viewModel.tasks()[0].title()).toBe('SomeTask');
     });
 
+    it('Should clear the new task title after it has been added', function(){
+      var viewModel = new TodoList();
+      viewModel.newTaskTitle('New Title');
+      viewModel.addTask();
+      expect(viewModel.newTaskTitle()).toBe('');
+    });
+
     it('Should leave added tasks in incomplete state', function(){
       var viewModel = new TodoList();
-      viewModel.addTask('A Task');
+      viewModel.newTaskTitle('A Task');
+      viewModel.addTask();
       expect(viewModel.tasks()[0].isComplete()).toBe(false);
     });
 
