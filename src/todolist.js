@@ -10,8 +10,11 @@ define(['knockout'], function(ko){
 
         self.tasks = ko.observableArray([]);
 
-        self.addTask = function(title){
-          self.tasks.push(new TodoItem(title));
+        self.newTaskTitle = ko.observable('');
+
+        self.addTask = function(){
+          self.tasks.push(new TodoItem(self.newTaskTitle()));
+          self.newTaskTitle('');
         };
 
         self.removeTask = function(task){
