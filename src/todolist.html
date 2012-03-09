@@ -1,26 +1,27 @@
 <html>
   <head>
+    <script type="text/javascript" data-main="main" src="require.js"></script>
   </head>
   <body>
     <h3>Tasks</h3>
 
-    <form>
+    <form data-bind="submit: addTask">
       <label>Add Task:</label>
       <input type="text" placeholder="What needs to be done?" />
       <button type="submit">Add Task</button>
     </form>
 
-    <ul>
+    <ul data-bind="foreach: tasks, visible: tasks().length > 0">
       <li>
-        <input type="checkbox" />
-        <input type="text" />
-        <a href="#">Delete</a>
+        <input type="checkbox" data-bind="checked: isComplete" />
+        <input type="text" data-bind="value: title, disable: isComplete" />
+        <a href="#" data-bind="click: $parent.removeTask">Delete</a>
       </li>
     </ul>
 
     <div>
-      <span>You have <b>&nbsp;</b> incomplete tasks</span>
-      <span> - Can I get a gold star now!</span>
+      <span>You have <b data-bind="text: incompleteTasks().length">&nbsp;</b> incomplete tasks</span>
+      <span data-bind="visible: incompleteTasks().length == 0"> - Can I get a gold star now!</span>
     </div>
   </body>
 </html>
