@@ -7,7 +7,7 @@
 
     <form data-bind="submit: addTask">
       <label>Add Task:</label>
-      <input type="text" placeholder="What needs to be done?" />
+      <input type="text" data-bind="value: newTaskTitle" placeholder="What needs to be done?" />
       <button type="submit">Add Task</button>
     </form>
 
