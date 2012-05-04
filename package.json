@@ -1,0 +1,10 @@
+{
+  "name" : "javascript-testing-example-with-mocha",
+  "version" : "0.0.1",
+  "dependencies" : {
+    "should" : "*",
+    "requirejs" : "*",
+    "knockout" : "*",
+    "mocha" : "*"
+  }
+}
